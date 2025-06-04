@@ -97,10 +97,8 @@ public class AnimatedButton extends SimpleButton {
             player.playSound(player.getLocation(), clickSound, 0.5f, 1.0f);
         }
         
-        GUIAction action = actions.getOrDefault(clickType, defaultAction);
-        if (action != null) {
-            action.execute(player, clickType);
-        }
+        // Delegate action execution to the superclass
+        super.onClick(player, clickType);
     }
     
     private Sound clickSound;
