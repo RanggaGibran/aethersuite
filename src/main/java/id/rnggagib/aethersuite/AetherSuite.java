@@ -10,6 +10,7 @@ import id.rnggagib.aethersuite.core.command.CommandManager;
 import id.rnggagib.aethersuite.core.command.HelpCommand;
 import id.rnggagib.aethersuite.core.command.player.LanguageCommand;
 import id.rnggagib.aethersuite.core.command.player.SettingsCommand;
+import id.rnggagib.aethersuite.core.command.teleport.*;
 import id.rnggagib.aethersuite.core.database.SimpleDatabaseManager;
 import id.rnggagib.aethersuite.core.gui.GUIManager;
 import id.rnggagib.aethersuite.core.module.SimpleModuleManager;
@@ -18,6 +19,7 @@ import id.rnggagib.aethersuite.core.platform.PlatformDetector;
 import id.rnggagib.aethersuite.core.player.PlayerManager;
 import id.rnggagib.aethersuite.core.scheduler.FoliaTaskScheduler;
 import id.rnggagib.aethersuite.core.scheduler.PaperTaskScheduler;
+import id.rnggagib.aethersuite.core.teleport.TeleportManager;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,6 +35,7 @@ public class AetherSuite extends JavaPlugin {
     private DatabaseManager databaseManager;
     private CommandManager commandManager;
     private PlayerManager playerManager;
+    private TeleportManager teleportManager;
 
     @Override
     public void onEnable() {
@@ -57,6 +60,8 @@ public class AetherSuite extends JavaPlugin {
         this.moduleManager = new SimpleModuleManager(this);
         
         this.playerManager = new PlayerManager(this);
+        
+        this.teleportManager = new TeleportManager(this);
         
         this.commandManager = new CommandManager(this);
         
@@ -106,6 +111,13 @@ public class AetherSuite extends JavaPlugin {
         registerCommand(new LanguageCommand(this));
         registerCommand(new SettingsCommand(this));
         
+        // Register teleport commands
+        registerCommand(new TpaCommand(this));
+        registerCommand(new TpahereCommand(this));
+        registerCommand(new TpacceptCommand(this));
+        registerCommand(new TpdenyCommand(this));
+        registerCommand(new BackCommand(this));
+        
         // Additional commands will be registered here or by modules
     }
     
@@ -147,6 +159,10 @@ public class AetherSuite extends JavaPlugin {
     
     public PlayerManager getPlayerManager() {
         return playerManager;
+    }
+    
+    public TeleportManager getTeleportManager() {
+        return teleportManager;
     }
     
     public PlatformType getPlatformType() {

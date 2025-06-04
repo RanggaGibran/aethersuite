@@ -72,18 +72,36 @@ modules:
     # Teleport messages
     teleport:
       request-sent: "<green>Teleport request sent to <gold>{player}</gold>.</green>"
-      request-received: "<yellow>{player} wants to teleport to you. <click:run_command:/tpaccept><hover:show_text:'<green>Click to accept'><dark_green>[Accept]</dark_green></hover></click> <click:run_command:/tpdeny><hover:show_text:'<red>Click to deny'><dark_red>[Deny]</dark_red></hover></click></yellow>"
-      request-here-received: "<yellow>{player} wants you to teleport to them. <click:run_command:/tpaccept><hover:show_text:'<green>Click to accept'><dark_green>[Accept]</dark_green></hover></click> <click:run_command:/tpdeny><hover:show_text:'<red>Click to deny'><dark_red>[Deny]</dark_red></hover></click></yellow>"
-      request-accepted: "<green>{player} accepted your teleport request.</green>"
-      request-denied: "<red>{player} denied your teleport request.</red>"
-      request-expired: "<red>Your teleport request to {player} has expired.</red>"
+      request-here-sent: "<green>Request sent to <gold>{player}</gold> to teleport to you.</green>"
+      request-received: "<green><gold>{player}</gold> has requested to teleport to you. Type <yellow>/tpaccept {player}</yellow> to accept or <yellow>/tpdeny {player}</yellow> to deny. This request will expire in <yellow>{time}</yellow> seconds.</green>"
+      request-here-received: "<green><gold>{player}</gold> has requested you to teleport to them. Type <yellow>/tpaccept {player}</yellow> to accept or <yellow>/tpdeny {player}</yellow> to deny. This request will expire in <yellow>{time}</yellow> seconds.</green>"
+      request-accepted: "<green>You have accepted <gold>{player}</gold>'s teleport request.</green>"
+      request-here-accepted: "<green>You have accepted <gold>{player}</gold>'s request to teleport to them.</green>"
+      request-denied: "<yellow>You have denied <gold>{player}</gold>'s teleport request.</yellow>"
+      request-denied-target: "<yellow><gold>{player}</gold> has denied your teleport request.</yellow>"
+      request-expired: "<yellow>Your teleport request to <gold>{player}</gold> has expired.</yellow>"
+      no-request: "<red>You don't have an active teleport request from <gold>{player}</gold>.</red>"
       no-pending-requests: "<red>You don't have any pending teleport requests.</red>"
-      toggle-on: "<green>Teleport requests enabled.</green>"
-      toggle-off: "<red>Teleport requests disabled.</red>"
-      not-accepting: "<red>{player} is not accepting teleport requests.</red>"
-      delay: "<yellow>Teleporting in {seconds} seconds. Don't move!</yellow>"
-      cancelled: "<red>Teleportation cancelled because you moved.</red>"
+      multiple-requests: "<yellow>You have multiple pending teleport requests:</yellow>"
+      list-to-you: "<yellow>• <gold>{player}</gold> wants to teleport to you</yellow>"
+      list-you-to: "<yellow>• <gold>{player}</gold> wants you to teleport to them</yellow>"
+      specify-player: "<yellow>Please specify which player's request to accept: <gold>/tpaccept <player></gold></yellow>"
+      requester-offline: "<red>The player who sent you this request is now offline.</red>"
+      cannot-teleport-self: "<red>You cannot teleport to yourself.</red>"
+      requests-disabled: "<red><gold>{player}</gold> has teleport requests disabled.</red>"
+      already-requested: "<red>You already have a pending teleport request to <gold>{player}</gold>.</red>"
       
+      warmup: "<green>Teleporting in <gold>{time}</gold> seconds. Don't move!</green>"
+      warmup-cancelled: "<red>Teleport cancelled.</red>"
+      cancelled: "<red>Teleport cancelled because you moved.</red>"
+      teleported: "<green>Teleported!</green>"
+      teleporting-to: "<green>Teleporting to <gold>{player}</gold> in <yellow>{time}</yellow> seconds...</green>"
+      teleporting-here: "<green><gold>{player}</gold> is teleporting to you in <yellow>{time}</yellow> seconds...</green>"
+      unsafe-location: "<red>Could not find a safe location to teleport to.</red>"
+      
+      no-back-location: "<red>You don't have a previous location to teleport to.</red>"
+      death-back-hint: "<yellow>Use <gold>/back</gold> to return to your death location.</yellow>"
+    
   chat:
     # Private message
     pm:
