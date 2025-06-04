@@ -1,7 +1,68 @@
 name: AetherSuite
 main: id.rnggagib.aethersuite.AetherSuite
 version: 1.0-SNAPSHOT
-api-version: 1.20
+api-version: '1.21' # Updated to match your server version
 description: Modern and optimized essentials plugin with support for Paper and Folia
 author: rnggagib
 website: https://github.com/RanggaGibran/aethersuite
+
+commands:
+  aetherhelp:
+    description: Shows help information for AetherSuite commands.
+    aliases: [ahelp]
+    usage: /<command> [page|command]
+    permission: aethersuite.command.help
+  language:
+    description: Change your language preferences.
+    aliases: [lang]
+    usage: /<command> [language]
+    permission: aethersuite.command.language
+  settings:
+    description: Manage your personal settings.
+    aliases: [options, prefs]
+    usage: /<command> [setting] [value]
+    permission: aethersuite.command.settings
+  tpa:
+    description: Send a teleport request to another player.
+    aliases: [tp, teleport]
+    usage: /<command> <player>
+    permission: aethersuite.teleport.tpa
+  tpahere:
+    description: Request a player to teleport to you.
+    aliases: [tphere]
+    usage: /<command> <player>
+    permission: aethersuite.teleport.tpahere
+  tpaccept:
+    description: Accept a teleport request.
+    aliases: [tpyes]
+    usage: /<command> [player]
+    permission: aethersuite.teleport.tpaccept
+  tpdeny:
+    description: Deny a teleport request.
+    aliases: [tpno]
+    usage: /<command> [player]
+    permission: aethersuite.teleport.tpdeny
+  back:
+    description: Teleport to your previous location.
+    usage: /<command>
+    permission: aethersuite.teleport.back
+  home:
+    description: Teleport to your home.
+    aliases: [h]
+    usage: /<command> [name]
+    permission: aethersuite.command.home
+  sethome:
+    description: Set a home at your current location.
+    aliases: [createhome, addhome]
+    usage: /<command> <name>
+    permission: aethersuite.command.sethome
+  delhome:
+    description: Delete one of your homes.
+    aliases: [removehome, deletehome]
+    usage: /<command> <name>
+    permission: aethersuite.command.delhome
+  homes:
+    description: List all of your homes.
+    aliases: [listhomes]
+    usage: /<command> [list]
+    permission: aethersuite.command.homes

@@ -13,8 +13,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <!-- Updated Paper API version to match server logs -->
         <paper.version>1.21.1-R0.1-SNAPSHOT</paper.version>
+        <adventure.version>4.21.0</adventure.version> <!-- Consistent Adventure version -->
+        <sqlite.version>3.45.3.0</sqlite.version>
+        <hikaricp.version>5.1.0</hikaricp.version>
+        <slf4j.version>2.0.13</slf4j.version>
+        <junit.version>5.10.2</junit.version>
     </properties>
 
     <repositories>
@@ -24,11 +28,12 @@
         </repository>
         <repository>
             <id>sonatype-oss-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
     <dependencies>
+        <!-- Paper API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -36,58 +41,60 @@
             <scope>provided</scope>
         </dependency>
         
+        <!-- Adventure API (provided by Paper) -->
         <dependency>
             <groupId>net.kyori</groupId>
             <artifactId>adventure-api</artifactId>
-            <version>4.17.0</version> <!-- Updated to a recent version, Paper 1.21.1 bundles this or newer -->
+            <version>${adventure.version}</version>
             <scope>provided</scope>
         </dependency>
         
+        <!-- Adventure Text Minimessage (to be shaded) -->
         <dependency>
             <groupId>net.kyori</groupId>
             <artifactId>adventure-text-minimessage</artifactId>
-            <version>4.17.0</version> <!-- Match adventure-api version -->
+            <version>${adventure.version}</version>
             <!-- Scope is default (compile), so it will be shaded -->
         </dependency>
         
+        <!-- SQLite JDBC (to be shaded) -->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-            <version>3.45.3.0</version> <!-- Updated to a recent version -->
-            <!-- Scope is default (compile) -->
+            <version>${sqlite.version}</version>
         </dependency>
         
+        <!-- HikariCP for connection pooling (to be shaded) -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>5.1.0</version> <!-- Updated to a recent version -->
-            <!-- Scope is default (compile) -->
+            <version>${hikaricp.version}</version>
         </dependency>
         
+        <!-- SLF4J API for HikariCP (to be shaded) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.13</version> <!-- Updated to a recent version -->
-            <!-- Scope is default (compile) -->
+            <version>${slf4j.version}</version>
         </dependency>
+        <!-- SLF4J Simple Implementation (to be shaded) -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId> <!-- Consider if you really need to bundle this. If so, relocate. -->
-            <version>2.0.13</version> <!-- Match slf4j-api version -->
-            <!-- Scope is default (compile) -->
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
         
-        <!-- JUnit for testing (ensure you have this or remove if not used) -->
+        <!-- JUnit for testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.2</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -118,10 +125,6 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <relocations>
                                 <relocation>
-                                    <pattern>net.kyori</pattern>
-                                    <shadedPattern>id.rnggagib.aethersuite.libs.kyori</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>com.zaxxer.hikari</pattern>
                                     <shadedPattern>id.rnggagib.aethersuite.libs.hikari</shadedPattern>
                                 </relocation>
@@ -130,7 +133,7 @@
                                     <shadedPattern>id.rnggagib.aethersuite.libs.slf4j</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>org.sqlite</pattern> <!-- For SQLite JDBC, main package is org.sqlite -->
+                                    <pattern>org.sqlite</pattern>
                                     <shadedPattern>id.rnggagib.aethersuite.libs.sqlite</shadedPattern>
                                 </relocation>
                             </relocations>
