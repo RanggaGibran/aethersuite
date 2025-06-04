@@ -4,7 +4,9 @@ import id.rnggagib.aethersuite.AetherSuite;
 import id.rnggagib.aethersuite.api.database.ConnectionProvider;
 import id.rnggagib.aethersuite.api.database.DatabaseManager;
 import id.rnggagib.aethersuite.api.database.DatabaseType;
+import id.rnggagib.aethersuite.api.database.dao.HomeDao;
 import id.rnggagib.aethersuite.api.database.dao.PlayerDataDao;
+import id.rnggagib.aethersuite.core.database.dao.SQLHomeDao;
 import id.rnggagib.aethersuite.core.database.dao.SQLPlayerDataDao;
 import id.rnggagib.aethersuite.core.database.migrations.DatabaseMigrationManager;
 
@@ -17,6 +19,7 @@ public class SimpleDatabaseManager implements DatabaseManager {
     private ConnectionProvider connectionProvider;
     private DatabaseMigrationManager migrationManager;
     private PlayerDataDao playerDataDao;
+    private HomeDao homeDao;
     
     public SimpleDatabaseManager(AetherSuite plugin) {
         this.plugin = plugin;
@@ -34,6 +37,7 @@ public class SimpleDatabaseManager implements DatabaseManager {
             runMigrations();
             
             playerDataDao = new SQLPlayerDataDao(this);
+            homeDao = new SQLHomeDao(this);
             
             plugin.getLogger().info("Database connection initialized successfully.");
         } catch (Exception e) {
@@ -84,5 +88,10 @@ public class SimpleDatabaseManager implements DatabaseManager {
     @Override
     public PlayerDataDao getPlayerDataDao() {
         return playerDataDao;
+    }
+    
+    @Override
+    public HomeDao getHomeDao() {
+        return homeDao;
     }
 }

@@ -1,4 +1,4 @@
-package id.rnggagib.api.command;
+package id.rnggagib.aethersuite.api.command;
 
 import org.bukkit.command.CommandSender;
 

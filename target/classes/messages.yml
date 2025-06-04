@@ -46,15 +46,25 @@ modules:
     # Home messages
     homes:
       set: "<green>Home <gold>{name}</gold> set at your current location.</green>"
-      deleted: "<green>Home <gold>{name}</gold> has been deleted.</green>"
+      updated: "<green>Home <gold>{name}</gold> updated to your current location.</green>"
+      deleted: "<green>Home <gold>{name}</gold> deleted.</green>"
       teleported: "<green>Teleported to home <gold>{name}</gold>.</green>"
-      not-found: "<red>You don't have a home named <gold>{name}</gold>.</red>"
-      max-reached: "<red>You've reached your maximum number of homes ({max}).</red>"
-      list-header: "<gold>Your homes:</gold>"
-      list-item: "<yellow>• {name} <gray>({world}, {x}, {y}, {z})</gray> <click:run_command:/home {name}><hover:show_text:'<green>Click to teleport'><dark_green>[Teleport]</dark_green></hover></click> <click:run_command:/delhome {name}><hover:show_text:'<red>Click to delete'><dark_red>[Delete]</dark_red></hover></click>"
-      list-empty: "<gray>You don't have any homes set.</gray>"
-      delay: "<yellow>Teleporting to <gold>{name}</gold> in {seconds} seconds. Don't move!</yellow>"
-      cancelled: "<red>Teleportation cancelled because you moved.</red>"
+      not-found: "<red>Home <gold>{name}</gold> not found.</red>"
+      limit-reached: "<red>You have reached your homes limit of {limit}.</red>"
+      none: "<yellow>You don't have any homes. Use <gold>/sethome <name></gold> to create one.</yellow>"
+      invalid-name: "<red>Invalid home name. Use only letters, numbers, underscores, and hyphens (max 16 characters).</red>"
+      
+      list-header: "<gold>Your Homes ({count}/{limit}):</gold>"
+      list-item: "<yellow>• <gold>{name}</gold> <gray>({world}: {x}, {y}, {z})</gray></yellow>"
+      click-to-teleport: "<green>Click to teleport to this home</green>"
+      
+      gui-title: "Your Homes"
+      gui-set-home: "§aCreate New Home"
+      gui-set-home-desc: "§7Click to set a new home"
+      gui-no-homes: "§cNo Homes"
+      gui-no-homes-desc: "§7You don't have any homes"
+      gui-confirm-delete-title: "Delete Home"
+      gui-confirm-delete-desc: "Are you sure you want to delete your home {name}?"
       
     # Warp messages
     warps:

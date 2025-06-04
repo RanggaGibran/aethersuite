@@ -8,11 +8,16 @@ import id.rnggagib.aethersuite.common.config.ConfigManager;
 import id.rnggagib.aethersuite.common.message.MessageProvider;
 import id.rnggagib.aethersuite.core.command.CommandManager;
 import id.rnggagib.aethersuite.core.command.HelpCommand;
+import id.rnggagib.aethersuite.core.command.home.DelhomeCommand;
+import id.rnggagib.aethersuite.core.command.home.HomeCommand;
+import id.rnggagib.aethersuite.core.command.home.HomesCommand;
+import id.rnggagib.aethersuite.core.command.home.SethomeCommand;
 import id.rnggagib.aethersuite.core.command.player.LanguageCommand;
 import id.rnggagib.aethersuite.core.command.player.SettingsCommand;
 import id.rnggagib.aethersuite.core.command.teleport.*;
 import id.rnggagib.aethersuite.core.database.SimpleDatabaseManager;
 import id.rnggagib.aethersuite.core.gui.GUIManager;
+import id.rnggagib.aethersuite.core.home.HomeManager;
 import id.rnggagib.aethersuite.core.module.SimpleModuleManager;
 import id.rnggagib.aethersuite.core.platform.PlatformType;
 import id.rnggagib.aethersuite.core.platform.PlatformDetector;
@@ -36,6 +41,7 @@ public class AetherSuite extends JavaPlugin {
     private CommandManager commandManager;
     private PlayerManager playerManager;
     private TeleportManager teleportManager;
+    private HomeManager homeManager;
 
     @Override
     public void onEnable() {
@@ -62,6 +68,8 @@ public class AetherSuite extends JavaPlugin {
         this.playerManager = new PlayerManager(this);
         
         this.teleportManager = new TeleportManager(this);
+        
+        this.homeManager = new HomeManager(this);
         
         this.commandManager = new CommandManager(this);
         
@@ -118,6 +126,12 @@ public class AetherSuite extends JavaPlugin {
         registerCommand(new TpdenyCommand(this));
         registerCommand(new BackCommand(this));
         
+        // Register home commands
+        registerCommand(new HomeCommand(this));
+        registerCommand(new SethomeCommand(this));
+        registerCommand(new DelhomeCommand(this));
+        registerCommand(new HomesCommand(this));
+        
         // Additional commands will be registered here or by modules
     }
     
@@ -163,6 +177,10 @@ public class AetherSuite extends JavaPlugin {
     
     public TeleportManager getTeleportManager() {
         return teleportManager;
+    }
+    
+    public HomeManager getHomeManager() {
+        return homeManager;
     }
     
     public PlatformType getPlatformType() {
