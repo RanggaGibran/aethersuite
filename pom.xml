@@ -93,7 +93,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
@@ -116,15 +116,27 @@
                                     <pattern>net.kyori</pattern>
                                     <shadedPattern>id.rnggagib.aethersuite.libs.kyori</shadedPattern>
                                 </relocation>
-                                <relocation>
-                                    <pattern>com.zaxxer.hikari</pattern>
-                                    <shadedPattern>id.rnggagib.aethersuite.libs.hikari</shadedPattern>
-                                </relocation>
+                                <!-- Relocate SLF4J if bundled, to avoid conflicts -->
                                 <relocation>
                                     <pattern>org.slf4j</pattern>
                                     <shadedPattern>id.rnggagib.aethersuite.libs.slf4j</shadedPattern>
                                 </relocation>
+                                <!-- Relocate HikariCP if bundled, to avoid conflicts -->
+                                <relocation>
+                                    <pattern>com.zaxxer.hikari</pattern>
+                                    <shadedPattern>id.rnggagib.aethersuite.libs.hikari</shadedPattern>
+                                </relocation>
                             </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
                         </configuration>
                     </execution>
                 </executions>
