@@ -1,0 +1,22 @@
+# AetherSuite English (US) Language File
+# This is a sample language file
+
+prefix: "<gold>[<yellow>AetherSuite</yellow>]</gold> "
+
+general:
+  no-permission: "<red>You don't have permission to do that.</red>"
+  player-only: "<red>This command can only be used by players.</red>"
+  unknown-player: "<red>Unknown player: {player}</red>"
+  invalid-syntax: "<red>Invalid syntax. Usage: {usage}</red>"
+  cooldown: "<red>You must wait {time} before using this command again.</red>"
+  
+  # Plugin information
+  plugin-info:
+    header: "<gold>===== <yellow>AetherSuite</yellow> =====</gold>"
+    version: "<yellow>Version: <white>{version}</white></yellow>"
+    author: "<yellow>Author: <white>{author}</white></yellow>"
+    modules: "<yellow>Loaded modules: <white>{modules}</white></yellow>"
+    footer: "<gold>========================</gold>"
+
+# More messages follow the same structure as messages.yml
+# This file would contain all the same keys as messages.yml

@@ -1,0 +1,189 @@
+# AetherSuite Messages
+# This file uses MiniMessage format
+# Format guide: https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<gold>[<yellow>AetherSuite</yellow>]</gold> "
+
+general:
+  no-permission: "<red>You don't have permission to do that.</red>"
+  player-only: "<red>This command can only be used by players.</red>"
+  unknown-player: "<red>Unknown player: {player}</red>"
+  invalid-syntax: "<red>Invalid syntax. Usage: {usage}</red>"
+  cooldown: "<red>You must wait {time} before using this command again.</red>"
+  
+  # Plugin information
+  plugin-info:
+    header: "<gold>===== <yellow>AetherSuite</yellow> =====</gold>"
+    version: "<yellow>Version: <white>{version}</white></yellow>"
+    author: "<yellow>Author: <white>{author}</white></yellow>"
+    modules: "<yellow>Loaded modules: <white>{modules}</white></yellow>"
+    footer: "<gold>========================</gold>"
+
+  # Player join messages
+  welcome: "<green>Welcome to the server, <gold>{player}</gold>!</green>"
+  welcome-back: "<green>Welcome back, <gold>{player}</gold>!</green>"
+  
+  # Language messages
+  language-changed: "<green>Your language has been changed to <gold>{language}</gold>.</green>"
+  invalid-language: "<red>Invalid language: <gold>{language}</gold></red>"
+  no-languages-found: "<red>No language files found.</red>"
+  available-languages-header: "<gold>Available Languages:</gold>"
+  language-item: "<yellow>• {code} - {name}</yellow>"
+  current-language-item: "<green>• {code} - {name} (Current)</green>"
+  click-to-select: "<green>Click to select this language</green>"
+  
+  # Settings messages
+  settings-header: "<gold>Your Settings:</gold>"
+  settings-footer: "<gray>Click on a setting to change its value.</gray>"
+  setting-item: "<yellow>• {setting}: <gold>{value}</gold></yellow>"
+  setting-current-value: "<green>Current value of <gold>{setting}</gold> is: <yellow>{value}</yellow></green>"
+  setting-updated: "<green>Setting <gold>{setting}</gold> updated to: <yellow>{value}</yellow></green>"
+  invalid-setting: "<red>Invalid setting: <gold>{setting}</gold></red>"
+  click-to-change: "<green>Click to change this setting</green>"
+
+modules:
+  player:
+    # Home messages
+    homes:
+      set: "<green>Home <gold>{name}</gold> set at your current location.</green>"
+      deleted: "<green>Home <gold>{name}</gold> has been deleted.</green>"
+      teleported: "<green>Teleported to home <gold>{name}</gold>.</green>"
+      not-found: "<red>You don't have a home named <gold>{name}</gold>.</red>"
+      max-reached: "<red>You've reached your maximum number of homes ({max}).</red>"
+      list-header: "<gold>Your homes:</gold>"
+      list-item: "<yellow>• {name} <gray>({world}, {x}, {y}, {z})</gray> <click:run_command:/home {name}><hover:show_text:'<green>Click to teleport'><dark_green>[Teleport]</dark_green></hover></click> <click:run_command:/delhome {name}><hover:show_text:'<red>Click to delete'><dark_red>[Delete]</dark_red></hover></click>"
+      list-empty: "<gray>You don't have any homes set.</gray>"
+      delay: "<yellow>Teleporting to <gold>{name}</gold> in {seconds} seconds. Don't move!</yellow>"
+      cancelled: "<red>Teleportation cancelled because you moved.</red>"
+      
+    # Warp messages
+    warps:
+      set: "<green>Warp <gold>{name}</gold> set at your current location.</green>"
+      deleted: "<green>Warp <gold>{name}</gold> has been deleted.</green>"
+      teleported: "<green>Teleported to warp <gold>{name}</gold>.</green>"
+      not-found: "<red>Warp <gold>{name}</gold> doesn't exist.</red>"
+      cost: "<yellow>Teleporting to <gold>{name}</gold> costs {cost}. <click:run_command:/warpconfirm {name}><hover:show_text:'<green>Click to confirm'><dark_green>[Confirm]</dark_green></hover></click></yellow>"
+      insufficient-funds: "<red>You don't have enough money to use this warp. Cost: {cost}</red>"
+      list-header: "<gold>Available warps:</gold>"
+      list-item: "<yellow>• {name} <click:run_command:/warp {name}><hover:show_text:'<green>Click to teleport'><dark_green>[Teleport]</dark_green></hover></click></yellow>"
+      list-empty: "<gray>There are no warps available.</gray>"
+      no-permission: "<red>You don't have permission to use this warp.</red>"
+      
+    # Teleport messages
+    teleport:
+      request-sent: "<green>Teleport request sent to <gold>{player}</gold>.</green>"
+      request-received: "<yellow>{player} wants to teleport to you. <click:run_command:/tpaccept><hover:show_text:'<green>Click to accept'><dark_green>[Accept]</dark_green></hover></click> <click:run_command:/tpdeny><hover:show_text:'<red>Click to deny'><dark_red>[Deny]</dark_red></hover></click></yellow>"
+      request-here-received: "<yellow>{player} wants you to teleport to them. <click:run_command:/tpaccept><hover:show_text:'<green>Click to accept'><dark_green>[Accept]</dark_green></hover></click> <click:run_command:/tpdeny><hover:show_text:'<red>Click to deny'><dark_red>[Deny]</dark_red></hover></click></yellow>"
+      request-accepted: "<green>{player} accepted your teleport request.</green>"
+      request-denied: "<red>{player} denied your teleport request.</red>"
+      request-expired: "<red>Your teleport request to {player} has expired.</red>"
+      no-pending-requests: "<red>You don't have any pending teleport requests.</red>"
+      toggle-on: "<green>Teleport requests enabled.</green>"
+      toggle-off: "<red>Teleport requests disabled.</red>"
+      not-accepting: "<red>{player} is not accepting teleport requests.</red>"
+      delay: "<yellow>Teleporting in {seconds} seconds. Don't move!</yellow>"
+      cancelled: "<red>Teleportation cancelled because you moved.</red>"
+      
+  chat:
+    # Private message
+    pm:
+      cannot-message-self: "<red>You cannot message yourself.</red>"
+      no-reply-target: "<red>You have nobody to reply to.</red>"
+      recipient-offline: "<red>{player} is offline.</red>"
+      spy-format: "<gray>[SPY: <gold>{sender}</gold> → <gold>{recipient}</gold>]: <white>{message}</white></gray>"
+      spy-toggled-on: "<green>Social spy enabled.</green>"
+      spy-toggled-off: "<red>Social spy disabled.</red>"
+    
+    # Channel messages
+    channels:
+      switched: "<green>Switched to <gold>{channel}</gold> channel.</green>"
+      no-permission: "<red>You don't have permission to use this channel.</red>"
+      invalid-channel: "<red>Invalid channel: {channel}</red>"
+
+  economy:
+    balance: "<green>Your balance: <gold>{balance}</gold></green>"
+    balance-other: "<green>{player}'s balance: <gold>{balance}</gold></green>"
+    payment-sent: "<green>You sent <gold>{amount}</gold> to <yellow>{player}</yellow>.</green>"
+    payment-received: "<green>You received <gold>{amount}</gold> from <yellow>{player}</yellow>.</green>"
+    insufficient-funds: "<red>You don't have enough funds. Required: {amount}</red>"
+    invalid-amount: "<red>Invalid amount: {amount}</red>"
+    
+  kits:
+    given: "<green>You received the <gold>{kit}</gold> kit.</green>"
+    not-found: "<red>Kit <gold>{name}</gold> doesn't exist.</red>"
+    no-permission: "<red>You don't have permission to use this kit.</red>"
+    cooldown: "<red>You must wait {time} before using the {kit} kit again.</red>"
+    created: "<green>Kit <gold>{name}</gold> created with a cooldown of {cooldown} seconds.</green>"
+    deleted: "<green>Kit <gold>{name}</gold> deleted.</green>"
+    
+  admin:
+    # Player management
+    player:
+      kicked: "<red>You have been kicked: {reason}</red>"
+      kick-broadcast: "<gold>{player} has been kicked: {reason}</gold>"
+      banned: "<red>You have been banned: {reason}</red>"
+      ban-broadcast: "<gold>{player} has been banned: {reason}</gold>"
+      unbanned: "<green>Player {player} has been unbanned.</green>"
+      muted: "<red>You have been muted for {duration}: {reason}</red>"
+      mute-broadcast: "<gold>{player} has been muted for {duration}: {reason}</gold>"
+      unmuted: "<green>Player {player} has been unmuted.</green>"
+      unmute-self: "<green>You have been unmuted.</green>"
+      is-muted: "<red>You are muted and cannot chat.</red>"
+      
+    # Server management
+    server:
+      broadcast: "<red>[<gold>Broadcast</gold>]</red> <white>{message}</white>"
+      motd-set: "<green>MOTD set successfully.</green>"
+      motd-current: "<green>Current MOTD:</green>\n<white>{motd}</white>"
+      rules-set: "<green>Rules set successfully.</green>"
+      rules-current: "<green>Server Rules:</green>\n<white>{rules}</white>"
+      time-set: "<green>Time set to {time}.</green>"
+      weather-set: "<green>Weather set to {weather}.</green>"
+      
+    # Utility commands
+    utility:
+      healed: "<green>You have been healed.</green>"
+      healed-other: "<green>You healed {player}.</green>"
+      fed: "<green>You have been fed.</green>"
+      fed-other: "<green>You fed {player}.</green>"
+      inventory-cleared: "<green>Your inventory has been cleared.</green>"
+      inventory-cleared-other: "<green>Cleared {player}'s inventory.</green>"
+      spawned-mob: "<green>Spawned {count} {mob}(s).</green>"
+      given-item: "<green>Given {count} {item}.</green>"
+      given-item-other: "<green>Given {count} {item} to {player}.</green>"
+      
+  world:
+    spawn:
+      set: "<green>Server spawn point set.</green>"
+      teleporting: "<green>Teleporting to spawn in {seconds} seconds. Don't move!</green>"
+      teleported: "<green>Teleported to spawn.</green>"
+      cancelled: "<red>Teleportation cancelled because you moved.</red>"
+    
+    protection:
+      cannot-build: "<red>You cannot build here.</red>"
+      cannot-break: "<red>You cannot break blocks here.</red>"
+      cannot-use: "<red>You cannot use this here.</red>"
+      
+# Help command messages
+help:
+  header: "<gold>=== AetherSuite Help (Page {page}/{total}) ===</gold>"
+  footer: "<gray>"
+  prev-button: "<yellow>[<gold>←</gold>]</yellow> "
+  prev-button-disabled: "<dark_gray>[←]</dark_gray> "
+  next-button: " <yellow>[<gold>→</gold>]</yellow>"
+  next-button-disabled: " <dark_gray>[→]</dark_gray>"
+  page-indicator: "<gray>Page {page}/{total}</gray>"
+  command-line: "<yellow>/{command}</yellow><gray>: {description}</gray>"
+  command-header: "<gold>=== Command Help: /{command} ===</gold>"
+  command-description: "<yellow>Description:</yellow> <gray>{description}</gray>"
+  command-usage: "<yellow>Usage:</yellow> <gray>{usage}</gray>"
+  command-aliases: "<yellow>Aliases:</yellow> <gray>{aliases}</gray>"
+  command-permission: "<yellow>Permission:</yellow> <gray>{permission}</gray>"
+  subcommands-header: "<yellow>Subcommands:</yellow>"
+  subcommand-line: "<yellow>  /{command}</yellow><gray>: {description}</gray>"
+  command-not-found: "<red>Command not found: {command}</red>"
+  click-to-suggest: "<green>Click to suggest this command</green>"
+  click-to-run: "<green>Click to run this command</green>"
+  run-command-button: "<yellow>[<gold>Run Command</gold>]</yellow>"
+  prev-page: "<green>Go to previous page</green>"
+  next-page: "<green>Go to next page</green>"

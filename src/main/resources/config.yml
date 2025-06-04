@@ -1,0 +1,143 @@
+# AetherSuite Configuration
+# Version: 1.0-SNAPSHOT
+
+general:
+  # Set to true to enable debug messages
+  debug: false
+  
+  # Language file to use (without .yml extension)
+  # Files are stored in the languages/ folder
+  language: en_US
+  
+  # Whether to check for updates on startup
+  check-updates: true
+
+database:
+  # Database type: SQLITE or MYSQL
+  type: SQLITE
+  
+  # SQLite settings (used if type is SQLITE)
+  sqlite:
+    filename: aethersuite.db
+  
+  # MySQL settings (used if type is MYSQL)
+  mysql:
+    host: localhost
+    port: 3306
+    database: aethersuite
+    username: root
+    password: password
+    pool-size: 10
+    max-lifetime: 1800000
+    connection-timeout: 5000
+    properties:
+      useSSL: false
+      allowPublicKeyRetrieval: true
+
+modules:
+  # Player module: homes, warps, teleportation
+  player:
+    enabled: true
+    homes:
+      enabled: true
+      max-default: 3
+      max-per-permission:
+        aethersuite.homes.vip: 5
+        aethersuite.homes.mvp: 10
+      delay-seconds: 3
+      cooldown-seconds: 30
+    
+    warps:
+      enabled: true
+      enable-costs: false
+      default-cost: 100.0
+    
+    teleport:
+      enabled: true
+      request-timeout-seconds: 60
+      delay-seconds: 3
+      cooldown-seconds: 60
+      cancel-on-move: true
+
+  # Chat module: formatting, private messages, channels
+  chat:
+    enabled: true
+    format:
+      enabled: true
+      default: "<gray>{prefix}<white>{player}</white>{suffix}<gray>: <white>{message}"
+    
+    private-messages:
+      enabled: true
+      format:
+        to: "<gray>[<gold>You</gold> → <gold>{player}</gold>]<gray>: <white>{message}"
+        from: "<gray>[<gold>{player}</gold> → <gold>You</gold>]<gray>: <white>{message}"
+      social-spy:
+        enabled: true
+        format: "<gray>[SPY: <gold>{sender}</gold> → <gold>{receiver}</gold>]<gray>: <white>{message}"
+    
+    channels:
+      enabled: false
+      default: global
+      list:
+        global:
+          format: "<gray>[<green>G</green>]<gray> {prefix}{player}{suffix}<gray>: <white>{message}"
+          permission: ""
+        local:
+          format: "<gray>[<yellow>L</yellow>]<gray> {prefix}{player}{suffix}<gray>: <white>{message}"
+          permission: ""
+          radius: 100
+        staff:
+          format: "<gray>[<red>Staff</red>]<gray> {prefix}{player}{suffix}<gray>: <white>{message}"
+          permission: "aethersuite.chat.staff"
+
+  # Economy module: balance, payments
+  economy:
+    enabled: true
+    starting-balance: 100.0
+    currency-singular: "coin"
+    currency-plural: "coins"
+    currency-symbol: "$"
+    format: "#,##0.00"
+    log-transactions: true
+
+  # Kits module: item kits with cooldowns
+  kits:
+    enabled: true
+    gui:
+      enabled: true
+      title: "<dark_purple>Available Kits"
+    preview:
+      enabled: true
+      title: "<dark_purple>Kit Preview: {kit}"
+
+  # Admin module: moderation tools
+  admin:
+    enabled: true
+    broadcast-prefix: "<red>[<gold>Broadcast</gold>]</red> "
+    
+    # Whois command configuration
+    whois:
+      enabled: true
+      format-header: "<gold>--- Player Info: <yellow>{player}</yellow> ---"
+      include-ip: false
+      include-coords: true
+    
+    # Command cooldowns (in seconds)
+    cooldowns:
+      heal: 60
+      feed: 60
+      clearinventory: 60
+
+  # World module: spawn management, basic protection
+  world:
+    enabled: true
+    spawn:
+      delay-seconds: 3
+    
+    protection:
+      enabled: true
+      spawn-radius: 64
+      protected-blocks:
+        - CHEST
+        - TRAPPED_CHEST
+        - BARREL
