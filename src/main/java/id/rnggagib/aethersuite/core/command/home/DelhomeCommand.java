@@ -20,10 +20,10 @@ import java.util.stream.Collectors;
     permission = "aethersuite.command.delhome",
     playerOnly = true
 )
-public class DelHomeCommand extends AbstractCommand {
+public class DelhomeCommand extends AbstractCommand {
     private final HomeManager homeManager;
     
-    public DelHomeCommand(AetherSuite plugin) {
+    public DelhomeCommand(AetherSuite plugin) {
         super(plugin);
         this.homeManager = plugin.getHomeManager();
     }
