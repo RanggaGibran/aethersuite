@@ -1,11 +1,12 @@
 package id.rnggagib.aethersuite.core.scheduler;
 
-import id.rnggagib.aethersuite.api.scheduler.TaskScheduler;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import id.rnggagib.aethersuite.api.scheduler.TaskScheduler;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
